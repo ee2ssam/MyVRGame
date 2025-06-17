@@ -26,23 +26,23 @@ namespace MyVRGame
         #endregion
 
         #region Custom Method
-        private void Toggle()
+        public void Toggle()
         {
             gameMenu.SetActive(!gameMenu.activeSelf);
 
             //UI가 보일때 - 앞 방향으로 2만큼 떨어진 곳에 보인다
             if (gameMenu.activeSelf)
             {
-                gameMenu.transform.position = head.position + new Vector3(head.forward.x, gameMenu.transform.position.y, head.forward.z).normalized * distance;
+                gameMenu.transform.position = new Vector3(head.position.x, gameMenu.transform.position.y, head.position.z)
+                    + new Vector3(head.forward.x, 0f, head.forward.z).normalized * distance;
                 gameMenu.transform.LookAt(new Vector3(head.position.x, gameMenu.transform.position.y, head.position.z));
                 gameMenu.transform.forward *= -1;
             }
         }
 
-        public void Quit()
+        public void MainMenu()
         {
-            Debug.Log("==========Game Quit");
-            Application.Quit();
+            Debug.Log("==========Goto MainMenu");
         }
         #endregion
     }

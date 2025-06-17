@@ -12,7 +12,22 @@ namespace MyVRGame
         #endregion
 
         #region Unity Event Method
-        protected override void OnSelectEntered(SelectEnterEventArgs args)
+        protected override void OnSelectEntering(SelectEnterEventArgs args)
+        {
+            //Attack Point 셋팅+
+            if (args.interactorObject.transform.CompareTag("LeftHand"))
+            {
+                attachTransform = leftAttackTransform;
+            }
+            else if (args.interactorObject.transform.CompareTag("RightHand"))
+            {
+                attachTransform = rightAttackTransform;
+            }
+
+            base.OnSelectEntering(args);
+        }
+
+        /*protected override void OnSelectEntered(SelectEnterEventArgs args)
         {
             //Attack Point 셋팅
             if(args.interactorObject.transform.CompareTag("LeftHand"))
@@ -25,7 +40,7 @@ namespace MyVRGame
             }
 
             base.OnSelectEntered(args);
-        }
+        }*/
         #endregion
     }
 }
