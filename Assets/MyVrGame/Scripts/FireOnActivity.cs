@@ -37,6 +37,8 @@ namespace MyVRGame
             if (isFire)
                 return;
 
+            Debug.Log("Fire");
+
             StartCoroutine(Shoot());
         }
 
